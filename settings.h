@@ -1,5 +1,5 @@
-#ifndef SETTINGS // include guard
-#define SETTINGS
+#ifndef SETTINGS_H_ // include guard
+#define SETTINGS_H_
 
 #define BACKGROUND_COLOR 0
 
