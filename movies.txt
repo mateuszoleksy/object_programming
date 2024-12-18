@@ -1,6 +1,3 @@
 Index&Title&Duration&Date&Author&Genre&Description&Movie ID
-1&Impossible&4:03&2015&Travis Scott&Hip hop&Fein&123456
-2&Highest in the room&2:57&2020&Travis Scott&Hip hop&Highest&223456
-3&Type Shit&3:49&2024&Travis Scott&Hip hop&We dont trust you&345678
-4&Antidote&4:43&2015&Travis Scott&Hip Hop&FEIN&345678
-5&SICKO MODE&5:23&2018&Travis Scott&Hip hop&FEIN&345678
+1&Gladiator&2:35&2000&Ridley Scott&Action/Adventure&A Gladiator movie&1
+2&Titanic&3:14&1997&James Cameron&Romance/Adventure&Titanic&2

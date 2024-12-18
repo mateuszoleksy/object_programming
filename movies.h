@@ -27,7 +27,7 @@ namespace moviesClass
         int movieId;
         public:
         movie(void): index(0), movieId(0) {} ;
-        friend void modify(vector <movie>& tab, int n);
+        friend int modify(vector <movie>& tab, int n);
         friend void add(vector <movie>& tab);
         friend void reload(vector <movie>& tab);
         movie(const int index, const string &titleEnter, const string &durationEnter, const string &dateEnter, const string &authorEnter, const string &genreEnter, const string &descriptionEnter, const int movieIdEnter):index(index),title(titleEnter),author(authorEnter),duration(durationEnter),genre(genreEnter),date(dateEnter),description(descriptionEnter),movieId(movieIdEnter) {};
@@ -49,15 +49,6 @@ namespace moviesClass
         string getterDescription(void) { return description; };
         int getterMovieId(void) const { return movieId; };
     };
-
-    inline bool movieIdUnique(vector <moviesClass::movie> const &movies, int const comparedValue) {
-        for (auto elem : movies) {
-            if (comparedValue == elem.getterMovieId()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     inline vector <movie> load(void)
     {
@@ -94,6 +85,15 @@ namespace moviesClass
             std::cout << setw(20) << ((index==0) ? "Index" : to_string(index))  << setw(20) << title << setw(20) << author << setw(20) << duration << setw(20) << date << setw(20) << genre << setw(20) << description << setw(20) << ((index==0) ? "Movie Id" : to_string(movieId)) << endl;
         }
 
+    inline bool movieIdUnique(vector <moviesClass::movie> const &movies, int const comparedValue) {
+        for (auto elem : movies) {
+            if (comparedValue == elem.getterMovieId()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     inline void add(vector <movie>& tab) {
         movie helper;
         string sequence;
@@ -102,7 +102,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].title << ": ";
             getline(cin, sequence);
-        } while (!sequence.empty());
+        } while (sequence.empty());
         helper.title = sequence;    
         if (sequence == "0")
             return;
@@ -110,7 +110,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].duration << ": ";
             getline(cin, sequence);
-        }  while (!sequence.empty());
+        }  while (sequence.empty());
         helper.duration = sequence;
         if (sequence == "0")
             return;
@@ -118,7 +118,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].date << ": ";
             getline(cin, sequence);
-        } while (!sequence.empty());
+        } while (sequence.empty());
         helper.date = sequence;
         if (sequence == "0")
             return;
@@ -126,7 +126,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].author << ": ";
             getline(cin, sequence);
-        } while (!sequence.empty());
+        } while (sequence.empty());
         helper.author = sequence;
         if (sequence == "0")
             return;
@@ -134,7 +134,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].genre << ": ";
             getline(cin, sequence);
-        } while (!sequence.empty());
+        } while (sequence.empty());
         helper.genre = sequence;
         if (sequence == "0")
             return;
@@ -142,7 +142,7 @@ namespace moviesClass
         do {
             std::cout << "Please enter, " << tab[0].description << ": ";
             getline(cin, sequence);
-        } while (!sequence.empty());
+        } while (sequence.empty());
         helper.description = sequence;
         if (sequence == "0")
             return;
@@ -270,48 +270,57 @@ namespace moviesClass
    }
 
 
-    inline void modify(vector <movie>& tab, const int n)
+    inline int modify(vector <movie>& tab, const int n)
     {
-        string sequence;
+        string sequence = "";
         bool helperValue = false;
-        movie helper;
+        movie helper = tab[n];
         cin.ignore();
         std::cout << "Please enter, " << tab[0].title << ": ";
         getline(cin, sequence);
-        helper.title = sequence;
+        if (!sequence.empty())
+            helper.title = sequence;
 
         std::cout << "Please enter, " << tab[0].duration << ": ";
         getline(cin, sequence);
-        helper.duration = sequence;
+        if (!sequence.empty())
+            helper.duration = sequence;
         
        std::cout << "Please enter, " << tab[0].date << ": ";
         getline(cin, sequence);
-        helper.date = sequence;
+        if (!sequence.empty())
+            helper.date = sequence;
 
          std::cout << "Please enter, " << tab[0].author << ": ";
         getline(cin, sequence);
-        helper.author = sequence;
+        if (!sequence.empty())
+            helper.author = sequence;
+
 
          std::cout << "Please enter, " << tab[0].genre << ": ";
         getline(cin, sequence);
-        helper.genre = sequence;
+        if (!sequence.empty())
+            helper.genre = sequence;
 
         std::cout << "Please enter, " << tab[0].description << ": ";
         getline(cin, sequence);
-        helper.description = sequence;
+        if (!sequence.empty())
+            helper.description = sequence;
 
-        getline(cin, sequence);
+        int old_value = 0;
         do {
             std::cout << "Please enter, Movie ID: ";
             getline(cin, sequence);
             try {
-                if (sequence.empty())
+                if (sequence.empty()) {
                     helperValue = true;
                     continue;
+                }
                 if ( stoi(sequence) <= 0)
                     throw 1;
                 if ( !movieIdUnique(tab, stoi(sequence)) )
                     throw 2;
+                old_value = tab[n].movieId;
                 helper.movieId = stoi(sequence);
                 helperValue = true;
             } catch (...)
@@ -320,6 +329,8 @@ namespace moviesClass
             }
         } while (!sharedClass::isNumeric(sequence) || !helperValue);
         tab[n] = helper;
+
+        return old_value;
     }
 }
 

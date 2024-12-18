@@ -5,6 +5,7 @@
 #include <vector>
 #include <windows.h>
 
+
 using namespace std;
 
 namespace sharedClass {

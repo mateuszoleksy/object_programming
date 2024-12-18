@@ -1,19 +1,20 @@
 #ifndef CLIENTS_H
 #define CLIENTS_H
 
+#include <chrono>
 #include <iostream>
 #include <vector>
 #include <string>
 #include <iomanip>
 #include <fstream>
 
-#include "movies.h"
 #include "shared.h"
 #include "settings.h"
 
 using namespace std;
 
 namespace clientsClass {
+
     // this class represents clients
     class client
     {
@@ -31,7 +32,7 @@ namespace clientsClass {
         friend void add (vector <client>& tab);
         friend void reload (vector <client>& tab);
         void modify(vector <client>& tab, int n, vector <moviesClass::movie> movies);
-        void setterId(const int idEnter) { id = idEnter; };
+        void setterId(const int idEnter) { id = idEnter; }
         int getterId(void) const { return id; };
         string getterName () { return name; };
         string getterSurname () { return surname; };
@@ -82,6 +83,25 @@ namespace clientsClass {
         return true;
     }
 
+    inline string getCurrentDate() {
+        auto now = chrono::system_clock::now();
+        time_t timeNow = chrono::system_clock::to_time_t(now);
+        tm* localTime = localtime(&timeNow);
+        char buffer[11];
+        strftime(buffer, sizeof(buffer), "%d.%m.%Y", localTime);
+        return string(buffer);
+    }
+
+    inline string calculateDueDate(int daysFromNow) {
+        auto now = chrono::system_clock::now();
+        auto dueTime = now + chrono::hours(24 * daysFromNow);
+        time_t timeDue = chrono::system_clock::to_time_t(dueTime);
+        tm* localTime = localtime(&timeDue);
+        char buffer[11];
+        strftime(buffer, sizeof(buffer), "%d.%m.%Y", localTime);
+        return string(buffer);
+    }
+
     inline void add(vector <client>& tab) {
         client helper;
         string sequence;
@@ -103,6 +123,8 @@ namespace clientsClass {
             std::cout << "Please enter, Pesel: ";
             getline(cin, sequence);
             try {
+                if (sequence.empty())
+                    throw 3;
                 if (stoi(sequence) <= 0)
                     throw 2;
                 if (!peselUnique(tab, stoi(sequence)))
@@ -116,7 +138,10 @@ namespace clientsClass {
         } while (!sharedClass::isNumeric(sequence) || !helperValue);
 
         cout << "Success!" << endl;
-
+        ofstream login;
+        login.open("users.txt", ios::app);
+        login << endl << helper.name << helper.surname << " " << 1111 << " standard " << helper.pesel;
+        login.close();
         helper.rentalDate = vector <string> {};
         helper.dueDate = vector <string> {};
         helper.movieId = vector <int> {};
@@ -145,6 +170,70 @@ namespace clientsClass {
             else
                 std::cout << setw(20) <<  rentalDate[0] << setw(20) << dueDate[0] << setw(20) << "Movie Id" << endl;
         }
+    }
+
+    inline void registerMovie(vector <client> &tab, const vector <moviesClass::movie> &movies, const int i) {
+        string sequence;
+        client helper = tab[i];
+        do {
+            cout << "Enter the movie ID: " << endl;
+            cin >> sequence;
+        } while (!sharedClass::isNumeric(sequence));
+        const int movieIndex = stoi(sequence);
+        do {
+            cout << "Enter number of days: " << endl;
+            cin >> sequence;
+        } while (!sharedClass::isNumeric(sequence));
+        if (const int days = stoi(sequence); days > 0 && !moviesClass::movieIdUnique(movies, movieIndex))
+        {
+            vector<int> movieIds = helper.getterMovieId();
+            for (auto elem : movieIds) {
+                if (elem == movieIndex) {
+                    tab[i] = helper;
+                    reload(tab);
+                    return;
+                }
+            }
+            movieIds.push_back(movieIndex);
+            helper.setterMovieId(movieIds);
+            vector<string> dates = helper.getterRentalDate();
+            dates.push_back(getCurrentDate());
+            helper.setterRentalDate(dates);
+            dates = helper.getterDueDate();
+            dates.push_back(calculateDueDate(days));
+            helper.setterDueDate(dates);}
+        tab[i] = helper;
+        reload(tab);
+    }
+
+    inline void returnMovie(vector <client> &tab, const vector <moviesClass::movie> &movies, int i) {
+        string sequence;
+        int movieIndex = 0;
+        do {
+            cout << "Enter the movie ID: " << endl;
+            cin >> sequence;
+        } while (!sharedClass::isNumeric(sequence));
+        movieIndex = stoi(sequence);
+        client helper = tab[i];
+
+        if (!moviesClass::movieIdUnique(movies, movieIndex))
+        {
+            vector<string> dates = tab[i].getterRentalDate();
+            vector<int> movieIds = tab[i].getterMovieId();
+            for (int y = 0; y < movieIds.size(); y++) {
+                if (movieIds[y] == movieIndex) {
+                    dates.erase(dates.begin()+y);
+                    helper.setterRentalDate(dates);
+                    dates = tab[i].getterDueDate();
+                    helper.setterDueDate(dates);
+                    dates.erase(dates.begin()+y);
+                    movieIds.erase(movieIds.begin()+y);
+                    helper.setterMovieId(movieIds);
+                }
+            }
+        }
+        tab[i] = helper;
+        reload(tab);
     }
 
     inline void reload(vector <client>& tab) {
@@ -192,6 +281,7 @@ namespace clientsClass {
         fileOut.close();
     }
 
+
     inline void client::modify(vector <client> &tab, int n, vector <moviesClass::movie> movies)
     {
         int op = 0;
@@ -223,8 +313,35 @@ namespace clientsClass {
                     throw 2;
                 if (!peselUnique(tab, stoi(sequence)))
                     throw 1;
-                if (!sequence.empty())
-                    tab[n].pesel = stoi(sequence);
+                ifstream login;
+                login.open("users.txt");
+                string peselEnter;
+                string mode;
+                string password;
+                string user;
+                vector <vector <string>> data;
+                while (login >> user >> password >> mode >> peselEnter) {
+                    vector <string> lines;
+                    lines.push_back(user);
+                    lines.push_back(password);
+                    lines.push_back(mode);
+                    if (tab[n].pesel == stoi(peselEnter))
+                        lines.push_back(sequence);
+                    else
+                        lines.push_back(peselEnter);
+                    data.push_back(lines);
+                }
+                login.close();
+                ofstream logout;
+                logout.open("users.txt");
+                for (int i = 0; i < data.size(); i++) {
+                    if (i == data.size() - 1)
+                        logout << data[i][0] << " " << data[i][1] << " " << data[i][2] << " " << data[i][3];
+                    else
+                        logout << data[i][0] << " " << data[i][1] << " " << data[i][2] << " " << data[i][3] << endl;
+                }
+                logout.close();
+                tab[n].pesel = stoi(sequence);
                 helper = true;
             } catch (...)
             {
