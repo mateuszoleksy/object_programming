@@ -195,44 +195,49 @@ namespace moviesClass
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 1 || moviesCategory == 0)
+                if (moviesCategory == 1 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helper =  movies[i].getterTitle();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 2 || moviesCategory == 0)
+                if (moviesCategory == 2 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helper =  movies[i].getterAuthor();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 3 || moviesCategory == 0)
+                if (moviesCategory == 3 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helper =  movies[i].getterDuration();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 4 || moviesCategory == 0)
+                if (moviesCategory == 4 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
             helper =  movies[i].getterGenre();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 5 || moviesCategory == 0)
+                if (moviesCategory == 5 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
 
@@ -240,9 +245,10 @@ namespace moviesClass
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 6 || moviesCategory == 0)
+                if (moviesCategory == 6 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
 
@@ -250,18 +256,20 @@ namespace moviesClass
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 7 || moviesCategory == 0)
+                if (moviesCategory == 7 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helper =  to_string(movies[i].getterMovieId());
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (moviesCategory == 8 || moviesCategory == 0)
+                if (moviesCategory == 8 || moviesCategory == 0) {
                     moviesIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
         }
 

@@ -225,7 +225,7 @@ int main()
                     break;
                     case 4:
                         do {
-                            cout << "Enter number of the search category: \n 0. Cancel \n 1. Index \n 2. " << clients[0].getterName() << " \n 3. " << clients[0].getterSurname() << " \n 4. Pesel \n 5. " << clients[0].getterRentalDate()[0] << " \n 6. " << clients[0].getterDueDate()[0] << " \n 7. MovieID" << endl;
+                            cout << "Enter number of the search category: \n 0. All \n 1. Index \n 2. " << clients[0].getterName() << " \n 3. " << clients[0].getterSurname() << " \n 4. Pesel \n 5. " << clients[0].getterRentalDate()[0] << " \n 6. " << clients[0].getterDueDate()[0] << " \n 7. MovieID" << endl;
                             cin >> menu;
                         } while (!sharedClass::isNumeric(menu));
                     operation = stoi(menu);
@@ -233,6 +233,9 @@ int main()
                     cout << "Please enter the search phrase: " << endl;
                     getline(cin, menu);
                     switch (operation) {
+                        case 0:
+                            helper = clientsClass::searchClients(menu, clients, 0);
+                        break;
                         case 1:
                             helper = clientsClass::searchClients(menu, clients, 1);
                         break;
@@ -327,7 +330,7 @@ int main()
                     break;
                     case 4:
                         do {
-                            cout << "Enter number of the search category: \n 0. Cancel \n 1. Index \n 2. " << movies[0].getterTitle() << " \n 3. " << movies[0].getterAuthor() << " \n 4. " << movies[0].getterDuration() << " \n 5. " << movies[0].getterGenre() << " \n 6. " << movies[0].getterDate() << " \n 7. " << movies[0].getterDescription() << " \n 8. MovieID" << endl;
+                            cout << "Enter number of the search category: \n 0. All \n 1. Index \n 2. " << movies[0].getterTitle() << " \n 3. " << movies[0].getterAuthor() << " \n 4. " << movies[0].getterDuration() << " \n 5. " << movies[0].getterGenre() << " \n 6. " << movies[0].getterDate() << " \n 7. " << movies[0].getterDescription() << " \n 8. MovieID" << endl;
                             cin >> menu;
                         } while (!sharedClass::isNumeric(menu));
                     operation = stoi(menu);
@@ -335,6 +338,9 @@ int main()
                     cout << "Please enter the search phrase: " << endl;
                     getline(cin, menu);
                     switch (operation) {
+                        case 0:
+                            helper = moviesClass::searchMovies(menu, movies, 0);
+                        break;
                         case 1:
                             helper = moviesClass::searchMovies(menu, movies, 1);
                         break;
@@ -428,7 +434,7 @@ int main()
             sequence = "";
             do {
                 sharedClass::setConsoleColor(INTERFACE_TEXT_COLOR, INTERFACE_BACKGROUND_COLOR);
-                cout << "Please enter a number of database to edit 0.Exit, 1.Movies, 2.Search, 3.Rent an movie, 4. Return an movie, 5. Change username and password: ";
+                cout << "Please enter a number of database to edit 0.Exit, 1.Search, 2.Rent an movie, 3. Return an movie, 4. Change username and password: ";
                 cin >> menu;
                 sharedClass::setConsoleColor(INTERFACE_TEXT_COLOR, INTERFACE_BACKGROUND_COLOR);
             } while (!sharedClass::isNumeric(menu));
@@ -448,7 +454,7 @@ int main()
                         break;
                     case 1:
                         do {
-                            cout << "Enter number of the search category: \n 0. Cancel \n 1. Index \n 2. " << movies[0].getterTitle() << " \n 3. " << movies[0].getterAuthor() << " \n 4. " << movies[0].getterDuration() << " \n 5. " << movies[0].getterGenre() << " \n 6. " << movies[0].getterDate() << " \n 7. " << movies[0].getterDescription() << " \n 8. MovieID" << endl;
+                            cout << "Enter number of the search category: \n 0. All \n 1. Index \n 2. " << movies[0].getterTitle() << " \n 3. " << movies[0].getterAuthor() << " \n 4. " << movies[0].getterDuration() << " \n 5. " << movies[0].getterGenre() << " \n 6. " << movies[0].getterDate() << " \n 7. " << movies[0].getterDescription() << " \n 8. MovieID" << endl;
                             cin >> menu;
                         } while (!sharedClass::isNumeric(menu));
                     operation = stoi(menu);
@@ -456,6 +462,9 @@ int main()
                     cout << "Please enter the search phrase: " << endl;
                     getline(cin, menu);
                     switch (operation) {
+                        case 0:
+                            helper = moviesClass::searchMovies(menu, movies, 0);
+                        break;
                         case 1:
                             helper = moviesClass::searchMovies(menu, movies, 1);
                         break;
@@ -499,26 +508,12 @@ int main()
                 }
                 break;
                 case 2:
-                    cout << "Please enter phrase to find in databases: ";
-                cin >> menu;
-                helper = moviesClass::searchMovies(menu, movies, 0);
-                cout << "Search results for: " << endl;
-                sharedClass::setConsoleColor(MOVIES_TEXT_COLOR, MOVIES_BACKGROUND_COLOR);
-                if (!helper.empty())
-                    cout << endl << "-------------------Movies--------------------: " << endl << endl;
-                for (int i : helper) {
-                    movies[i].print();
-                }
-                sharedClass::setConsoleColor(INTERFACE_TEXT_COLOR, INTERFACE_BACKGROUND_COLOR);
-                cout << "End of search" << endl;
-                break;
-                case 3:
                     clientsClass::registerMovie(clients, movies, index);
                     break;
-                case 4:
+                case 3:
                     clientsClass::returnMovie(clients, movies, index);
                     break;
-                case 5:
+                case 4:
                     
                     do {
                         cout << "Enter new username: ";

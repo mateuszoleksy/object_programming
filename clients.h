@@ -285,6 +285,7 @@ namespace clientsClass {
     inline void client::modify(vector <client> &tab, int n, vector <moviesClass::movie> movies)
     {
         int op = 0;
+        string operation;
         cin.ignore();
         bool helper = false;
         if (n <= tab.size())
@@ -353,8 +354,12 @@ namespace clientsClass {
             do
             {
                 sharedClass::setConsoleColor(INTERFACE_TEXT_COLOR, INTERFACE_BACKGROUND_COLOR);
-                std::cout << "Please enter for " << n << " record, register/modify/del new movie rental. First choose number of operation: 0.end; 1.add; 2.del; sub-record; 3.modify; 4.del all: ";
-                cin >> op;
+                do {
+                    std::cout << "Please enter for " << n << " record, register/modify/del new movie rental. First choose number of operation: 0. End; 1. Add; 2. Delete sub-record; 3. Modify; 4. Delete all: ";
+                    getline(cin, operation);
+                } while (!sharedClass::isNumeric(operation) || operation.empty());
+                op = stoi(operation);
+
                 switch (op)
                 {
                     case 0:
@@ -366,12 +371,12 @@ namespace clientsClass {
                         do {
                             cout << "Please enter new record in " << tab[0].rentalDate[0] << ": ";
                             getline(cin, sequence);
-                        } while (!sequence.empty());
+                        } while (sequence.empty());
                         tab[n].rentalDate.push_back(sequence);
                         do {
                             cout << "Please enter new record in " << tab[0].dueDate[0] << ": ";
                             getline(cin, sequence);
-                        } while (!sequence.empty());
+                        } while (sequence.empty());
                         tab[n].dueDate.push_back(sequence);
                         do {
                         cout << "Please enter index of record of an movie" << ": ";
@@ -403,7 +408,7 @@ namespace clientsClass {
                             op = stoi(sequence);
                             if (op <= 0)
                                 break;
-                            if (op-1 <= tab[n].rentalDate.size())
+                            if (op <= tab[n].rentalDate.size())
                             {
                                 tab[n].rentalDate.erase(rentalDate.begin()+op-1);
                                 tab[n].dueDate.erase(dueDate.begin()+op-1);
@@ -481,90 +486,97 @@ namespace clientsClass {
         vector <string> helperTab;
         vector <int> clientsIndex;
         int pos;
+        bool out = false;
         for (int i = 1; i < clients.size(); i++)
         {
+            out = false;
             helper =  to_string(clients[i].getterId());
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (clientsCategory == 1 || clientsCategory == 0)
+                if (clientsCategory == 1 || clientsCategory == 0) {
                     clientsIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helper =  clients[i].getterName();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (clientsCategory == 2 || clientsCategory == 0)
+                if (clientsCategory == 2 || clientsCategory == 0) {
                     clientsIndex.push_back(i);
-                continue;
+                    continue;
+                }
+
             }
 
             helper =  clients[i].getterSurname();
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (clientsCategory == 3 || clientsCategory == 0)
+                if (clientsCategory == 3 || clientsCategory == 0) {
                     clientsIndex.push_back(i);
-                continue;
+                    continue;
+                }
+
             }
 
             helper =  to_string(clients[i].getterPesel());
             pos = helper.find(phrase);
             if ( pos != string::npos )
             {
-                if (clientsCategory == 4 || clientsCategory == 0)
+                if (clientsCategory == 4 || clientsCategory == 0) {
                     clientsIndex.push_back(i);
-                continue;
+                    continue;
+                }
             }
 
             helperTab =  clients[i].getterRentalDate();
             for (auto elem:helperTab)
             {
                 pos = elem.find(phrase);
-                if ( pos != string::npos )
+                if ( pos != string::npos && (clientsCategory == 5 || clientsCategory == 0))
                 {
-                    if (clientsCategory == 5 || clientsCategory == 0)
                         clientsIndex.push_back(i);
-                    break;
+                        out = true;
+                        break;
                 }
             }
             helperTab.clear();
-            if (pos != string::npos)
+            if (out)
                 continue;
 
             helperTab =  clients[i].getterDueDate();
             for (auto elem:helperTab)
             {
                 pos = elem.find(phrase);
-                if ( pos != string::npos )
+                if ( pos != string::npos  && (clientsCategory == 6 || clientsCategory == 0))
                 {
-                    if (clientsCategory == 5 || clientsCategory == 0)
                         clientsIndex.push_back(i);
-                    break;
+                        out = true;
+                        break;
                 }
             }
             helperTab.clear();
-            if (pos != string::npos)
+            if (out)
                 continue;
 
             for (auto elem:clients[i].getterMovieId())
             {
                 helperTab.push_back(to_string(elem));
+                cout << elem << endl;
             }
             for (auto elem:helperTab)
             {
                 pos = elem.find(phrase);
-                if ( pos != string::npos )
+                if ( pos != string::npos  && (clientsCategory == 7 || clientsCategory == 0))
                 {
-                    if (clientsCategory == 5 || clientsCategory == 0)
                         clientsIndex.push_back(i);
-                    break;
+                        break;
                 }
             }
-            if (pos != string::npos)
-                continue;
+            helperTab.clear();
         }
 
         return clientsIndex;
