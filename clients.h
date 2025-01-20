@@ -179,12 +179,12 @@ namespace clientsClass {
             cout << "Enter the movie ID: " << endl;
             cin >> sequence;
         } while (!sharedClass::isNumeric(sequence));
-        const int movieIndex = stoi(sequence);
+        int movieIndex = stoi(sequence);
         do {
             cout << "Enter number of days: " << endl;
             cin >> sequence;
         } while (!sharedClass::isNumeric(sequence));
-        if (const int days = stoi(sequence); days > 0 && !moviesClass::movieIdUnique(movies, movieIndex))
+        if (int days = stoi(sequence); days > 0 && !moviesClass::movieIdUnique(movies, movieIndex))
         {
             vector<int> movieIds = helper.getterMovieId();
             for (auto elem : movieIds) {
@@ -201,7 +201,8 @@ namespace clientsClass {
             helper.setterRentalDate(dates);
             dates = helper.getterDueDate();
             dates.push_back(calculateDueDate(days));
-            helper.setterDueDate(dates);}
+            helper.setterDueDate(dates);
+        }
         tab[i] = helper;
         reload(tab);
     }
@@ -225,8 +226,8 @@ namespace clientsClass {
                     dates.erase(dates.begin()+y);
                     helper.setterRentalDate(dates);
                     dates = tab[i].getterDueDate();
-                    helper.setterDueDate(dates);
                     dates.erase(dates.begin()+y);
+                    helper.setterDueDate(dates);
                     movieIds.erase(movieIds.begin()+y);
                     helper.setterMovieId(movieIds);
                 }
@@ -355,7 +356,7 @@ namespace clientsClass {
             {
                 sharedClass::setConsoleColor(INTERFACE_TEXT_COLOR, INTERFACE_BACKGROUND_COLOR);
                 do {
-                    std::cout << "Please enter for " << n << " record, register/modify/del new movie rental. First choose number of operation: 0. End; 1. Add; 2. Delete sub-record; 3. Modify; 4. Delete all: ";
+                    std::cout << "Please enter for " << n << " record, register/modify/del new movie rental. First choose number of operation: 0. End; 1. Add; 2. Delete sub-record; 3. Modify; 4. Delete all: " <<endl;
                     getline(cin, operation);
                 } while (!sharedClass::isNumeric(operation) || operation.empty());
                 op = stoi(operation);
@@ -565,7 +566,6 @@ namespace clientsClass {
             for (auto elem:clients[i].getterMovieId())
             {
                 helperTab.push_back(to_string(elem));
-                cout << elem << endl;
             }
             for (auto elem:helperTab)
             {
