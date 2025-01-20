@@ -1,0 +1,592 @@
+\doxysection{clients.\+h}
+\label{clients_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CLIENTS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLIENTS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}shared.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}settings.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }clientsClass\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ this\ class\ represents\ clients}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }client}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ surname;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pesel;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ vector\ <string>\ rentalDate;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ vector\ <string>\ dueDate;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ vector\ <int>\ movieId;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ client(\textcolor{keywordtype}{void}):\ pesel(0),\ id(0)\ \{\};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ add\ (vector\ <client>\&\ tab);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ reload\ (vector\ <client>\&\ tab);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ modify(vector\ <client>\&\ tab,\ \textcolor{keywordtype}{int}\ n,\ vector\ <moviesClass::movie>\ movies);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterId(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idEnter)\ \{\ \textcolor{keywordtype}{id}\ =\ idEnter;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getterId(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ id;\ \};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterName\ ()\ \{\ \textcolor{keywordflow}{return}\ name;\ \};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterSurname\ ()\ \{\ \textcolor{keywordflow}{return}\ surname;\ \};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getterPesel\ ()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pesel;\ \};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ vector\ <string>\ getterRentalDate\ ()\ \{\ \textcolor{keywordflow}{return}\ rentalDate;\ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ vector\ <string>\ getterDueDate\ ()\ \{\ \textcolor{keywordflow}{return}\ dueDate;\ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ vector\ <int>\ getterMovieId\ ()\ \{\ \textcolor{keywordflow}{return}\ movieId;\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterName\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&nameEnter)\ \{\ name\ =\ nameEnter;\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterSurname\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&surnameEnter)\ \{\ surname\ =\ surnameEnter;\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterPesel\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ peselEnter)\ \{\ pesel\ =\ peselEnter;\ \};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterRentalDate\ (\textcolor{keyword}{const}\ vector\ <string>\ \&rentalDateEnter\ )\ \{\ rentalDate\ =\ rentalDateEnter;\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterDueDate\ (\textcolor{keyword}{const}\ vector\ <string>\ \&dueDateEnter)\ \{\ dueDate\ =\ dueDateEnter;\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterMovieId\ (\textcolor{keyword}{const}\ vector\ <int>\ \&movieIdEnter)\ \{\ movieId\ =\ movieIdEnter;\ \};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ print()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ printTwo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ client(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ idEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&nameEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&surnameEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ peselEnter,\ \textcolor{keyword}{const}\ vector\ <string>\ \&rentalDateEnter,\ \textcolor{keyword}{const}\ vector\ <string>\ \&dueDateEnter,\ \textcolor{keyword}{const}\ vector\ <int>\ \&movieIdEnter):id(idEnter),name(nameEnter),surname(surnameEnter),pesel(peselEnter),rentalDate(rentalDateEnter),dueDate(dueDateEnter),movieId(movieIdEnter)\ \{\};}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{inline}\ vector\ <client>\ load(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ file\ for\ clients\ database}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ifstream\ fileIn;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ vector\ <client>\ clients;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ fileIn.open(FILE\_OUT\_CLIENTS);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ counter\ \{-\/1\};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fileIn.good())\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ dane;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(fileIn,\ sequence))}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dane\ =\ sharedClass::tokanizer(sequence,\ SEP);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsClass::client\ client(++counter,\ dane[1],\ dane[2],\ ((!sharedClass::isNumeric(dane[3]))\ ?\ 0\ :\ stoi(dane[3])),\ ((dane[4]!=\textcolor{stringliteral}{"{}"{}})\ ?\ sharedClass::tokanizer(dane[4],\ DATE\_SEP)\ :\ vector\ <string>\ \{\}),\ ((dane[5]!=\textcolor{stringliteral}{"{}"{}})\ ?\ sharedClass::tokanizer(dane[5],\ DATE\_SEP)\ :\ vector\ <string>\ \{\}),\ ((counter==-\/1\ ||\ dane[6]==\textcolor{stringliteral}{"{}"{}})\ ?\ vector\ <int>\ \{\}\ :\ sharedClass::stoiElem(sharedClass::tokanizer(dane[6],\ DATE\_SEP))));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clients.push\_back(client);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dane.clear();}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ close\ file\ for\ clients\ database}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ fileIn.close();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ clients;}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ peselUnique(vector\ <client>\ \textcolor{keyword}{const}\ \&clients,\ \textcolor{keywordtype}{int}\ \textcolor{keyword}{const}\ comparedValue)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem\ :\ clients)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comparedValue\ ==\ elem.getterPesel())}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ getCurrentDate()\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ chrono::system\_clock::now();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ time\_t\ timeNow\ =\ chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ tm*\ localTime\ =\ localtime(\&timeNow);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[11];}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%d.\%m.\%Y"{}},\ localTime);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ string(buffer);}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ calculateDueDate(\textcolor{keywordtype}{int}\ daysFromNow)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ chrono::system\_clock::now();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ dueTime\ =\ now\ +\ chrono::hours(24\ *\ daysFromNow);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ time\_t\ timeDue\ =\ chrono::system\_clock::to\_time\_t(dueTime);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ tm*\ localTime\ =\ localtime(\&timeDue);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[11];}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%d.\%m.\%Y"{}},\ localTime);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ string(buffer);}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ add(vector\ <client>\&\ tab)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ client\ helper;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ helperValue\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].name\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ helper.name\ =\ sequence;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].surname\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ helper.surname\ =\ sequence;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ Pesel:\ "{}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence.empty())}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 3;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 2;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!peselUnique(tab,\ stoi(sequence)))}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.pesel\ =\ stoi(sequence);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helperValue\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ bad\ format.\ Pesel\ must\ an\ unique,\ positive\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helperValue);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Success!"{}}\ <<\ endl;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ ofstream\ login;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ login.open(\textcolor{stringliteral}{"{}users.txt"{}},\ ios::app);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ login\ <<\ endl\ <<\ helper.name\ <<\ helper.surname\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ 1111\ <<\ \textcolor{stringliteral}{"{}\ standard\ "{}}\ <<\ helper.pesel;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ login.close();}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ helper.rentalDate\ =\ vector\ <string>\ \{\};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ helper.dueDate\ =\ vector\ <string>\ \{\};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ helper.movieId\ =\ vector\ <int>\ \{\};}
+\DoxyCodeLine{00148\ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ tab.push\_back(helper);}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ client::print()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ ==\ 0)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ sharedClass::setConsoleColor(FIRST\_ROW\_TEXT\_COLOR,\ FIRST\_ROW\_BACKGROUND\_COLOR);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ sharedClass::setConsoleColor(CLIENT\_TEXT\_COLOR,\ CLIENT\_BACKGROUND\_COLOR);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ std::cout\ <<\ setw(20)\ <<\ ((\textcolor{keywordtype}{id}==0)\ ?\ \textcolor{stringliteral}{"{}Index"{}}\ :\ to\_string(\textcolor{keywordtype}{id}))\ <<\ setw(20)\ <<\ name\ <<\ setw(20)\ <<\ surname\ <<\ setw(20)\ <<\ ((pesel==0)\ ?\ \textcolor{stringliteral}{"{}Pesel"{}}\ :\ to\_string(pesel));}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ printTwo();}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ client::printTwo()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rentalDate.size();\ i++)}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{id}\ !=\ 0)}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ setw(20)\ \ <<\ to\_string(i+1)+\textcolor{stringliteral}{"{}.\ "{}}+rentalDate[i]\ <<\ setw(20)\ <<\ dueDate[i]\ <<\ setw(20)\ <<\ movieId[i]\ <<\ \ endl;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ setw(100)\ <<\ to\_string(i+1)+\textcolor{stringliteral}{"{}.\ "{}}+\ rentalDate[i]\ <<\ setw(20)\ <<\ dueDate[i]\ <<\ setw(20)\ <<\ movieId[i]\ <<\ endl;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ setw(20)\ <<\ \ rentalDate[0]\ <<\ setw(20)\ <<\ dueDate[0]\ <<\ setw(20)\ <<\ \textcolor{stringliteral}{"{}Movie\ Id"{}}\ <<\ endl;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ registerMovie(vector\ <client>\ \&tab,\ \textcolor{keyword}{const}\ vector\ <moviesClass::movie>\ \&movies,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ client\ helper\ =\ tab[i];}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Enter\ the\ movie\ ID:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ sequence;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence));}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ movieIndex\ =\ stoi(sequence);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Enter\ number\ of\ days:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ sequence;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence));}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{int}\ days\ =\ stoi(sequence);\ days\ >\ 0\ \&\&\ !moviesClass::movieIdUnique(movies,\ movieIndex))}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ movieIds\ =\ helper.getterMovieId();}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem\ :\ movieIds)\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elem\ ==\ movieIndex)\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[i]\ =\ helper;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reload(tab);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ movieIds.push\_back(movieIndex);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterMovieId(movieIds);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ dates\ =\ helper.getterRentalDate();}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ dates.push\_back(getCurrentDate());}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterRentalDate(dates);}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ dates\ =\ helper.getterDueDate();}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ dates.push\_back(calculateDueDate(days));}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterDueDate(dates);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ tab[i]\ =\ helper;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ reload(tab);}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ returnMovie(vector\ <client>\ \&tab,\ \textcolor{keyword}{const}\ vector\ <moviesClass::movie>\ \&movies,\ \textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ movieIndex\ =\ 0;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Enter\ the\ movie\ ID:\ "{}}\ <<\ endl;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ sequence;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence));}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ movieIndex\ =\ stoi(sequence);}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ client\ helper\ =\ tab[i];}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!moviesClass::movieIdUnique(movies,\ movieIndex))}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ dates\ =\ tab[i].getterRentalDate();}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ movieIds\ =\ tab[i].getterMovieId();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ movieIds.size();\ y++)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (movieIds[y]\ ==\ movieIndex)\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dates.erase(dates.begin()+y);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterRentalDate(dates);}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dates\ =\ tab[i].getterDueDate();}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dates.erase(dates.begin()+y);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterDueDate(dates);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ movieIds.erase(movieIds.begin()+y);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.setterMovieId(movieIds);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ tab[i]\ =\ helper;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ reload(tab);}
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ reload(vector\ <client>\&\ tab)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ ofstream\ fileOut;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ helper\ =\ -\/1;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ elem:tab)}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ elem.setterId(++helper);}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ fileOut.open(FILE\_OUT\_CLIENTS);}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ counter\ =\ 0;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ counter\ =\ 0;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ elem.id\ <<\ SEP\ <<\ elem.name\ <<\ SEP\ <<\ elem.surname\ <<\ SEP\ <<\ elem.pesel\ <<\ SEP;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ record:elem.rentalDate)}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elem.id\ !=\ 0\ \&\&\ ++counter\ !=\ elem.rentalDate.size())}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record\ <<\ DATE\_SEP;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ SEP;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ counter\ =\ 0;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ record:elem.dueDate)}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elem.id\ !=\ 0\ \&\&\ ++counter\ !=\ elem.dueDate.size())}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record\ <<\ DATE\_SEP;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record;}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ SEP;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elem.id\ ==\ 0)}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ \textcolor{stringliteral}{"{}Movie\ ID"{}};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ counter\ =\ 0;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ record:elem.movieId)}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++counter\ !=\ elem.movieId.size())}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record\ <<\ DATE\_SEP;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ record;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ endl;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ fileOut.close();}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ client::modify(vector\ <client>\ \&tab,\ \textcolor{keywordtype}{int}\ n,\ vector\ <moviesClass::movie>\ movies)}
+\DoxyCodeLine{00287\ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ op\ =\ 0;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ operation;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ helper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <=\ tab.size())}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ for\ "{}}\ <<\ n\ <<\ \textcolor{stringliteral}{"{}\ record,\ "{}}\ <<\ tab[0].name\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].name\ =\ sequence;}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ for\ "{}}\ <<\ n\ <<\ \textcolor{stringliteral}{"{}\ record,\ "{}}\ <<\ tab[0].surname\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].surname\ =\ sequence;}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ for\ "{}}\ <<\ n\ <<\ \textcolor{stringliteral}{"{}\ record,\ Pesel:\ "{}};}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence.empty())\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 2;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!peselUnique(tab,\ stoi(sequence)))}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ifstream\ login;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ login.open(\textcolor{stringliteral}{"{}users.txt"{}});}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ peselEnter;}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ mode;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ password;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ user;}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector\ <vector\ <string>>\ data;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (login\ >>\ user\ >>\ password\ >>\ mode\ >>\ peselEnter)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector\ <string>\ lines;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines.push\_back(user);}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines.push\_back(password);}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines.push\_back(mode);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tab[n].pesel\ ==\ stoi(peselEnter))}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines.push\_back(sequence);}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lines.push\_back(peselEnter);}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.push\_back(lines);}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ login.close();}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofstream\ logout;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logout.open(\textcolor{stringliteral}{"{}users.txt"{}});}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ data.size();\ i++)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ data.size()\ -\/\ 1)}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logout\ <<\ data[i][0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][1]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][2]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][3];}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logout\ <<\ data[i][0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][1]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][2]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ data[i][3]\ <<\ endl;}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logout.close();}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].pesel\ =\ stoi(sequence);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ bad\ format.\ Pesel\ must\ be\ an\ unique,\ positive\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helper);}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ help\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sharedClass::setConsoleColor(INTERFACE\_TEXT\_COLOR,\ INTERFACE\_BACKGROUND\_COLOR);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ for\ "{}}\ <<\ n\ <<\ \textcolor{stringliteral}{"{}\ record,\ register/modify/del\ new\ movie\ rental.\ First\ choose\ number\ of\ operation:\ 0.\ End;\ 1.\ Add;\ 2.\ Delete\ sub-\/record;\ 3.\ Modify;\ 4.\ Delete\ all:\ "{}}\ <<endl;}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ operation);}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(operation)\ ||\ operation.empty());}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ op\ =\ stoi(operation);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (op)}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help\ =\ 0;}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ new\ record\ in\ "{}}\ <<\ tab[0].rentalDate[0]\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].rentalDate.push\_back(sequence);}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ new\ record\ in\ "{}}\ <<\ tab[0].dueDate[0]\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].dueDate.push\_back(sequence);}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ index\ of\ record\ of\ an\ movie"{}}\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stoi(sequence)\ >\ movies.size()\ ||\ stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].movieId.push\_back(movies[stoi(sequence)].getterMovieId());}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ movie\ index\ must\ be\ valid\ movie\ index\ and\ an\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helper);}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem.print();}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Enter\ number\ of\ sub-\/record\ to\ del,\ or\ 0\ to\ cancel:\ "{}};}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ sequence;}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence));}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ op\ =\ stoi(sequence);}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (op\ <=\ 0)}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (op\ <=\ tab[n].rentalDate.size())}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].rentalDate.erase(rentalDate.begin()+op-\/1);}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].dueDate.erase(dueDate.begin()+op-\/1);}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].movieId.erase(movieId.begin()+op-\/1);}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem.print();}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter\ number\ of\ the\ sub-\/record\ or\ 0\ to\ cancel:\ "{}};}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin\ >>\ sequence;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence));}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ op\ =\ stoi(sequence);}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (op\ <=\ 0\ ||\ op\ >\ tab[n].rentalDate.size())}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].rentalDate[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].rentalDate[op-\/1]\ =\ sequence;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].dueDate[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].dueDate[op-\/1]\ =\ sequence;}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ \textcolor{stringliteral}{"{}index\ of\ a\ movie\ record"{}}\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence.empty())\ \{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stoi(sequence)\ >\ movies.size()\ ||\ stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].movieId[op-\/1]\ =\ movies[stoi(sequence)].getterMovieId();}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ movie\ index\ must\ be\ valid\ movie\ index\ and\ an\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helper)\ ;}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem.print();}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].rentalDate.clear();}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].dueDate.clear();}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tab[n].movieId.clear();}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem.print();}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (help);}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00483\ \ \ \ \ \}}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{keyword}{inline}\ vector\ <int>\ searchClients(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&phrase,\ vector\ <clientsClass::client>\ clients,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ clientsCategory)\ \{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ helper;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ vector\ <string>\ helperTab;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ vector\ <int>\ clientsIndex;}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ out\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ clients.size();\ i++)}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ out\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ to\_string(clients[i].getterId());}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (clientsCategory\ ==\ 1\ ||\ clientsCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ clients[i].getterName();}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (clientsCategory\ ==\ 2\ ||\ clientsCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ clients[i].getterSurname();}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (clientsCategory\ ==\ 3\ ||\ clientsCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ to\_string(clients[i].getterPesel());}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (clientsCategory\ ==\ 4\ ||\ clientsCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ helperTab\ =\ \ clients[i].getterRentalDate();}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:helperTab)}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ elem.find(phrase);}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ \&\&\ (clientsCategory\ ==\ 5\ ||\ clientsCategory\ ==\ 0))}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ helperTab.clear();}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (out)}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ helperTab\ =\ \ clients[i].getterDueDate();}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:helperTab)}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ elem.find(phrase);}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ \ \&\&\ (clientsCategory\ ==\ 6\ ||\ clientsCategory\ ==\ 0))}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ helperTab.clear();}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (out)}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:clients[i].getterMovieId())}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helperTab.push\_back(to\_string(elem));}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:helperTab)}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ elem.find(phrase);}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ \ \&\&\ (clientsCategory\ ==\ 7\ ||\ clientsCategory\ ==\ 0))}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clientsIndex.push\_back(i);}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ helperTab.clear();}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ clientsIndex;}
+\DoxyCodeLine{00583\ \ \ \ \ \}}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \}}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

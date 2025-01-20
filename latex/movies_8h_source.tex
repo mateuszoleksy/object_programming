@@ -1,0 +1,350 @@
+\doxysection{movies.\+h}
+\label{movies_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MOVIES\_H\_\ }\textcolor{comment}{//\ include\ guard}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MOVIES\_H\_}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}shared.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}settings.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }moviesClass}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ this\ class\ represents\ movies}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }movie}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ title;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ author;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ duration;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ date;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ genre;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ description;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ movieId;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ movie(\textcolor{keywordtype}{void}):\ index(0),\ movieId(0)\ \{\}\ ;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{int}\ modify(vector\ <movie>\&\ tab,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ add(vector\ <movie>\&\ tab);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ reload(vector\ <movie>\&\ tab);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ movie(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&titleEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&durationEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&dateEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&authorEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&genreEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&descriptionEnter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ movieIdEnter):index(index),title(titleEnter),author(authorEnter),duration(durationEnter),genre(genreEnter),date(dateEnter),description(descriptionEnter),movieId(movieIdEnter)\ \{\};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ print()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterIndex(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ indexEnter)\ \{\ index\ =\ indexEnter;\ \};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterTitle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&titleEnter)\ \{\ title\ =\ titleEnter;\ \};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterAuthor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&authorEnter)\ \{\ author\ =\ authorEnter;\ \};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterDuration(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&durationEnter)\ \{\ duration\ =\ durationEnter;\ \};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterDate(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&dateEnter)\ \{\ date\ =\ dateEnter;\ \};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterGenre(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&genreEnter)\ \{\ genre\ =\ genreEnter;\ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterDescription(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&descriptionEnter)\ \{\ description\ =\ descriptionEnter;\ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setterMovieId(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ movieIdEnter)\ \{\ movieId\ =\ movieIdEnter;\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getterIndex\ (\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ index;\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterTitle(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ title;\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterAuthor(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ author;\ \};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterDuration(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ duration;\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterDate(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ date;\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterGenre(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ genre;\ \};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ getterDescription(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ description;\ \};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getterMovieId(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ movieId;\ \};}
+\DoxyCodeLine{00051\ \ \ \ \ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{inline}\ vector\ <movie>\ load(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ main\ file\ which\ is\ database}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ ifstream\ fileIn;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ vector<string>\ dane;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ vector\ <movie>\ movies;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ fileIn.open(FILE\_OUT\_MOVIES);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ counter\ \{-\/1\};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fileIn.good())}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ data\ enter\ from\ file\ to\ vector\ helper,\ tokanizer\ returns\ vector\ so\ does\ vector\ helper\ have\ to\ be\ simply\ vector\ type}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(fileIn,\ sequence))}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dane\ =\ sharedClass::tokanizer(sequence,\ SEP);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ movie\ movie(++counter,\ dane[1],\ dane[2],\ dane[3],\ dane[4],\ dane[5],\ dane[6],\ ((counter==-\/1)\ ?\ 0\ :\ stoi(dane[7]))\ );}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ movies.push\_back(movie);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dane.clear();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ close\ file\ for\ movies\ database}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ fileIn.close();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ movies;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ method\ printing\ records}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ movie::print()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ ==\ 0)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sharedClass::setConsoleColor(FIRST\_ROW\_TEXT\_COLOR,\ FIRST\_ROW\_BACKGROUND\_COLOR);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sharedClass::setConsoleColor(MOVIES\_TEXT\_COLOR,\ MOVIES\_BACKGROUND\_COLOR);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ setw(20)\ <<\ ((index==0)\ ?\ \textcolor{stringliteral}{"{}Index"{}}\ :\ to\_string(index))\ \ <<\ setw(20)\ <<\ title\ <<\ setw(20)\ <<\ author\ <<\ setw(20)\ <<\ duration\ <<\ setw(20)\ <<\ date\ <<\ setw(20)\ <<\ genre\ <<\ setw(20)\ <<\ description\ <<\ setw(20)\ <<\ ((index==0)\ ?\ \textcolor{stringliteral}{"{}Movie\ Id"{}}\ :\ to\_string(movieId))\ <<\ endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ movieIdUnique(vector\ <moviesClass::movie>\ \textcolor{keyword}{const}\ \&movies,\ \textcolor{keywordtype}{int}\ \textcolor{keyword}{const}\ comparedValue)\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem\ :\ movies)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comparedValue\ ==\ elem.getterMovieId())\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ add(vector\ <movie>\&\ tab)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ movie\ helper;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ helperValue\ \{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].title\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ helper.title\ =\ sequence;\ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].duration\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}\ \ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ helper.duration\ =\ sequence;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].date\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ helper.date\ =\ sequence;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].author\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ helper.author\ =\ sequence;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].genre\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ helper.genre\ =\ sequence;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].description\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence.empty());}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ helper.description\ =\ sequence;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence\ ==\ \textcolor{stringliteral}{"{}0"{}})}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ Movie\ ID:\ "{}};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !movieIdUnique(tab,\ stoi(sequence))\ )}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 2;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.movieId\ =\ stoi(sequence);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helperValue\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ Movie\ ID\ must\ be\ an\ unique,\ positive\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helperValue);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Success!"{}}\ <<\ endl;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ tab.push\_back(helper);}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ reload(vector\ <movie>\&\ tab\ )}
+\DoxyCodeLine{00172\ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ ofstream\ fileOut;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ helper\ =\ -\/1;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ elem:tab)}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ elem.setterIndex(++helper);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ fileOut.open(FILE\_OUT\_MOVIES);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ elem:tab)}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ fileOut\ <<\ ((elem.index\ ==\ 0)\ ?\ \textcolor{stringliteral}{"{}Index"{}}\ :\ to\_string(elem.index))\ <<\ SEP\ <<\ elem.title\ <<\ SEP\ <<\ elem.duration\ <<\ SEP\ <<\ elem.date\ <<\ SEP\ <<\ elem.author\ <<\ SEP\ <<\ elem.genre\ <<\ SEP\ <<\ elem.description\ <<\ SEP\ <<\ ((elem.index\ ==\ 0)\ ?\ \textcolor{stringliteral}{"{}Movie\ ID"{}}\ :\ to\_string(elem.movieId))\ <<\ endl;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ fileOut.close();}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{inline}\ vector\ <int>\ searchMovies(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&phrase,\ vector\ <moviesClass::movie>\ movies,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ moviesCategory)}
+\DoxyCodeLine{00188\ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ helper;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ vector\ <int>\ moviesIndex;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ movies.size();\ i++)}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ to\_string(movies[i].getterIndex());}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 1\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterTitle();}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 2\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterAuthor();}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 3\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterDuration();}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 4\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterGenre();}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 5\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterDate();}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 6\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ movies[i].getterDescription();}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 7\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ helper\ =\ \ to\_string(movies[i].getterMovieId());}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ helper.find(phrase);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ pos\ !=\ string::npos\ )}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moviesCategory\ ==\ 8\ ||\ moviesCategory\ ==\ 0)\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moviesIndex.push\_back(i);}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ moviesIndex;}
+\DoxyCodeLine{00278\ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ modify(vector\ <movie>\&\ tab,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n)}
+\DoxyCodeLine{00282\ \ \ \ \ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sequence\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ helperValue\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ movie\ helper\ =\ tab[n];}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ cin.ignore();}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].title\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ helper.title\ =\ sequence;}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].duration\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ helper.duration\ =\ sequence;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].date\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ helper.date\ =\ sequence;}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].author\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ helper.author\ =\ sequence;}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].genre\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ helper.genre\ =\ sequence;}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ "{}}\ <<\ tab[0].description\ <<\ \textcolor{stringliteral}{"{}:\ "{}};}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!sequence.empty())}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ helper.description\ =\ sequence;}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ old\_value\ =\ 0;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ enter,\ Movie\ ID:\ "{}};}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ getline(cin,\ sequence);}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence.empty())\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helperValue\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ stoi(sequence)\ <=\ 0)}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 1;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ !movieIdUnique(tab,\ stoi(sequence))\ )}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ 2;}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ old\_value\ =\ tab[n].movieId;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helper.movieId\ =\ stoi(sequence);}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ helperValue\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Conversion\ error,\ Movie\ ID\ must\ be\ an\ unique,\ positive\ integer."{}}\ <<\ endl;}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!sharedClass::isNumeric(sequence)\ ||\ !helperValue);}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ tab[n]\ =\ helper;}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ old\_value;}
+\DoxyCodeLine{00342\ \ \ \ \ \}}
+\DoxyCodeLine{00343\ \}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

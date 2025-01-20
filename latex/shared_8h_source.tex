@@ -1,0 +1,65 @@
+\doxysection{shared.\+h}
+\label{shared_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHARED\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHARED\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }sharedClass\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setConsoleColor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ textColor,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bgColor)\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ SetConsoleTextAttribute(GetStdHandle(STD\_OUTPUT\_HANDLE),\ (textColor\ +\ (bgColor\ *\ 16)));}
+\DoxyCodeLine{00014\ \ \ \ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ isNumeric(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&s)}
+\DoxyCodeLine{00017\ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ s.size();\ i++\ )}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((s[i]>=\textcolor{charliteral}{'0'}\ \&\&\ s[i]<=\textcolor{charliteral}{'9'})\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00025\ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//main\ class}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{inline}\ vector\ <int>\ stoiElem(\textcolor{keyword}{const}\ vector\ <string>\ \&tab)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ vector\ <int>\ numbers;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ tab.size();\ i++)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ numbers.push\_back(stoi(tab[i]));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ numbers;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ function\ for\ separation\ of\ words\ in\ string:str\ with\ given\ separator:sep}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{inline}\ vector<string>\ tokanizer(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ sep)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ vector\ <string>\ vector;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ indexOld\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ str.find(sep,\ index);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >0\ \&\&\ index\ <\ str.size())}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector.push\_back(str.substr(indexOld,\ index-\/indexOld));}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indexOld\ =\ index+1;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ +=\ sep.size();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (index\ !=\ string::npos);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ vector.push\_back(str.substr(indexOld,\ str.size()));}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector;}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
