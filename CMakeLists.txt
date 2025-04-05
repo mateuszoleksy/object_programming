@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_COMPILER "C:/msys64/ucrt64/bin/c++.exe")
 set(CMAKE_CXX_COMPILER "C:/msys64/ucrt64/bin/c++.exe")
 
-project(object_programming)
+project(object_programming VERSION 0.1.0 LANGUAGES C CXX)
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/movies
