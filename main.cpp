@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "movies.h"
-#include "clients.h"
+#include "movies/movies.h"
+#include "clients/clients.h"
 #include "shared.h"
 #include <conio.h>
 

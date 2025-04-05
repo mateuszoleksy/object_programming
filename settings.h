@@ -5,8 +5,8 @@
 
 #define SEP "&"
 #define DATE_SEP "%"
-#define FILE_OUT_CLIENTS "clients.txt"
-#define FILE_OUT_MOVIES "movies.txt"
+#define FILE_OUT_CLIENTS "data/clients.txt"
+#define FILE_OUT_MOVIES "data/movies.txt"
 #define CLIENT_TEXT_COLOR 3
 #define CLIENT_BACKGROUND_COLOR BACKGROUND_COLOR
 #define MOVIES_TEXT_COLOR 1
