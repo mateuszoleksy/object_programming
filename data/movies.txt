@@ -1,0 +1,3 @@
+Index&Title&Duration&Date&Author&Genre&Description&Movie ID
+1&Gladiator&2:35&2000&Ridley Scott&Action/Adventure&A Gladiator movie&1
+2&Titanic&3:14&1997&James Cameron&Romance/Adventure&A Titanic movie&2
